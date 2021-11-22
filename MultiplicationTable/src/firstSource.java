@@ -7,20 +7,13 @@ public class firstSource {
 		Scanner scanner = new Scanner(System.in);
 		int number = scanner.nextInt();
 		
-		// for문
-		System.out.println("==== "+number+"단 ====");
-		for(int j=1; j<=9; j++)
-			System.out.println(number+" X "+j+" = " + number*j);
-	
-		// 줄 나눔
-		System.out.print("\n\n");
-		
-		// while문
-		System.out.println("==== "+number+"단 ====");
-		int i=1;
-		while(i<10) {
-			System.out.println(number+" X "+i+" = " + number*i);
-			i++;
+		// 2~9 범위의 숫자를 올바르게 입력받았는가
+		if(number>=2 && number<=9) {
+			System.out.println("==== "+number+"단 ====");
+			for(int j=1; j<=9; j++)
+				System.out.println(number+" X "+j+" = " + number*j);
+		} else {
+			System.out.println("2~9 범위의 숫자를 입력해주세요!!!");
 		}
 		
 	}
