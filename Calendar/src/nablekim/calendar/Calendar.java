@@ -5,22 +5,22 @@ import java.util.Scanner;
 public class Calendar {
 	public static void main(String[] args) {
 		
-		// µÎ ¼ö¸¦ ÀÔ·Â¹Ş±â
+		// ë‘ ìˆ˜ë¥¼ ì…ë ¥ë°›ê¸°
 		Scanner sc = new Scanner(System.in);
 		
 		String s1, s2;
 		s1 = sc.next();
 		s2 = sc.next();
 		
-		// Á¤¼öÇü º¯¼ö¿¡ ÀúÀå
+		// ì •ìˆ˜í˜• ë³€ìˆ˜ì— ì €ì¥
 		int a, b;
 		a = Integer.parseInt(s1);
 		b = Integer.parseInt(s2);
 		
-		// Á¤´ä Ãâ·Â
-		System.out.printf("µÎ ¼öÀÇ ÇÕÀº %d ÀÔ´Ï´Ù", a+b);
+		// ë‘ ìˆ˜ì˜ í•© ì¶œë ¥
+		System.out.printf("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ %d ï¿½Ô´Ï´ï¿½", a+b);
 		
-		// ÀÚ¿ø ÇØÁ¦
+		// ìŠ¤ìºë„ˆ ìì› í•´ì œ
 		sc.close();
 	}
 }
