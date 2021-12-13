@@ -2,7 +2,7 @@ package nablekim.calendar;
 
 import java.util.Scanner;
 
-public class Calendar {
+public class Calendar1 {
 	public static void main(String[] args) {
 		
 		// 두 수를 입력받기
@@ -18,7 +18,7 @@ public class Calendar {
 		b = Integer.parseInt(s2);
 		
 		// 두 수의 합 출력
-		System.out.printf("�� ���� ���� %d �Դϴ�", a+b);
+		System.out.printf("두 수의 합은 %d\n", a+b);
 		
 		// 스캐너 자원 해제
 		sc.close();
