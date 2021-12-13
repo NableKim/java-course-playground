@@ -9,6 +9,20 @@ public class Calendar5 {
 	public int getDaysOfMonth(int month) {
 		return monthArr[month - 1];
 	}
+	
+	public void printMonth(int month) {
+		int dayOfMonth = getDaysOfMonth(month);
+		
+		System.out.printf("< %d월 >\n", month);
+		System.out.println("  일 월 화 수 목 금 토");
+		System.out.println("====================");
+		
+		for(int i=0; i<dayOfMonth; i++) {
+			System.out.printf("%3d", i+1);
+			if(i%7==6) System.out.print("\n");
+		}
+		System.out.print("\n");
+	}
 
 	public static void main(String[] args) {
 
@@ -21,7 +35,7 @@ public class Calendar5 {
 			int month = sc.nextInt();
 			if(month == -1) break;
 			if(month<1 || month>12) continue;
-			System.out.println(cal.getDaysOfMonth(month));
+			cal.printMonth(month);
 		}
 
 		sc.close();
