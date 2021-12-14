@@ -27,10 +27,30 @@ public class Calendar {
 		return 0;
 	}
 	
-	public void printMonth(int year, int month, String weekdayStr) {
-		int dayOfMonth = getDaysOfMonth(year, month);
+	public int getTotalDaysFrom1970(int year, int month) {
+		int syear = 1970;
+		int smonth = 1;
 		
-		int weekday = getWeekDay(weekdayStr);
+		//1970.1.1 기준 몇일째인지 계산
+		int count = 0;
+		for(int i=syear; i<year; i++) {
+			if(isLeapYear(i))
+				count += 366;
+			else
+				count += 365;
+		}
+		
+		for(int i=smonth; i<month; i++) {
+			count += getDaysOfMonth(year, i);
+		}
+		
+		return count;
+	}
+	
+	public void printMonth(int year, int month) {
+		int dayOfMonth = getDaysOfMonth(year, month);
+		int count = getTotalDaysFrom1970(year, month);
+		int weekday = (count+4)%7;
 		
 		System.out.printf("< %d년 %d월 >\n", year, month);
 		System.out.println("  일 월 화 수 목 금 토");

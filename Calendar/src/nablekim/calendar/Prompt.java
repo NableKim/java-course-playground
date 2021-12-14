@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Prompt {
 	private static final String PROMPT_YEAR = "year> ";
 	private static final String PROMPT_MONTH = "month> ";
-	private static final String PROMPT_WEEKDAY = "weekday> ";
+	//private static final String PROMPT_DAY = "day> ";
 	
 	public void runPrompt() {
 		Scanner sc = new Scanner(System.in);
@@ -23,11 +23,12 @@ public class Prompt {
 			int month = sc.nextInt();
 			if(month<1 || month>12) continue;
 			
-			System.out.println("요일(SU, MO, TU, ... SA)을 입력하세요.");
-			System.out.print(PROMPT_WEEKDAY);
-			String weekday = sc.next();
+//			System.out.println("일 숫자(1~31)을 입력하세요.");
+//			System.out.print(PROMPT_DAY);
+//			int day = sc.nextInt();
+			//String weekday = sc.next();
 			
-			cal.printMonth(year, month, weekday);
+			cal.printMonth(year, month);
 		}
 
 		sc.close();
