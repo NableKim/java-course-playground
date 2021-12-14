@@ -1,9 +1,41 @@
 package nablekim.calendar;
 
-public class Calendar {
-	public static final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	public static final int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 
+public class Calendar {
+	private static final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	private static final int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	private HashMap <Date, String> planMap;
+	
+	public Calendar() {
+		planMap = new HashMap<Date, String>();
+	}
+	
+	public String getSchedule(String dateStr) {
+		try {
+			Date date = new SimpleDateFormat("yyyy-mm-dd").parse(dateStr);
+			return planMap.get(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public boolean registerSchedule(String dateStr, String ScheduleStr) {
+		try {
+			Date date = new SimpleDateFormat("yyyy-mm-dd").parse(dateStr);
+			planMap.put(date, ScheduleStr);
+			return true;
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public boolean isLeapYear(int year) {
 		if(year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
 			return true;

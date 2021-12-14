@@ -26,8 +26,8 @@ public class Prompt {
 		while(true) {
 			printMenu();	// 메뉴 출력
 			String cmd = sc.next();
-			if(cmd.equals("1")) cmdRegister();
-			else if(cmd.equals("2")) cmdSearch();
+			if(cmd.equals("1")) cmdRegister(sc, cal);
+			else if(cmd.equals("2")) cmdSearch(sc, cal);
 			else if(cmd.equals("3")) cmdCal(sc, cal);
 			else if(cmd.equals("h")) printMenu();
 			else if(cmd.equals("q")) break;
@@ -49,14 +49,27 @@ public class Prompt {
 		cal.printMonth(year, month);
 	}
 
-	private void cmdSearch() {
-		// TODO Auto-generated method stub
+	private void cmdSearch(Scanner sc, Calendar cal) {
+		System.out.println("날짜를 입력하세요. ex) yyyy-mm-dd");
+		String dateStr = sc.next();
+		
+		String scheduleStr=cal.getSchedule(dateStr);
+		if(scheduleStr == null || scheduleStr.isEmpty())
+			System.out.println(cal.getSchedule(dateStr));
 		
 	}
 
-	private void cmdRegister() {
-		// TODO Auto-generated method stub
+	private void cmdRegister(Scanner sc, Calendar cal) {
+		System.out.println("날짜를 입력하세요. ex) yyyy-mm-dd");
+		String dateStr = sc.next();
+		sc.nextLine();	// enter issue
 		
+		System.out.println("할일을 입력하세요");
+		String scheduleStr = sc.nextLine();
+		
+		// 해당 날짜에 일정을 등록
+		if(cal.registerSchedule(dateStr, scheduleStr))
+			System.out.println("일정이 성공적으로 등록되었습니다.");
 	}
 
 	public static void main(String[] args) {
