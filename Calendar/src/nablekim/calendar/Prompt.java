@@ -6,6 +6,11 @@ public class Prompt {
 	private static final String PROMPT_YEAR = "year> ";
 	private static final String PROMPT_MONTH = "month> ";
 	private static final String PROMPT_MENU = "menu> ";
+	private static ManageSchedule ls;
+	
+	public Prompt() {
+		ls = new FileLoadSchedule();
+	}
 	
 	public void printMenu() {
 		System.out.println("+-----------------------");
@@ -22,7 +27,9 @@ public class Prompt {
 		
 		Scanner sc = new Scanner(System.in);
 		Calendar cal = new Calendar();
-
+		
+		ls.loadSchduleData(cal);
+		
 		while(true) {
 			printMenu();	// 메뉴 출력
 			String cmd = sc.next();
@@ -55,7 +62,8 @@ public class Prompt {
 		
 		String scheduleStr=cal.getSchedule(dateStr);
 		if(scheduleStr == null || scheduleStr.isEmpty())
-			System.out.println(cal.getSchedule(dateStr));
+			return;
+		System.out.println(scheduleStr);
 		
 	}
 
@@ -68,8 +76,10 @@ public class Prompt {
 		String scheduleStr = sc.nextLine();
 		
 		// 해당 날짜에 일정을 등록
-		if(cal.registerSchedule(dateStr, scheduleStr))
+		if(cal.registerSchedule(dateStr, scheduleStr)) {
+			ls.storeScheduleData(dateStr, scheduleStr);
 			System.out.println("일정이 성공적으로 등록되었습니다.");
+		}
 	}
 
 	public static void main(String[] args) {
